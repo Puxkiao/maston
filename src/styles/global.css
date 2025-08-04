@@ -1,0 +1,218 @@
+/* Import existing styles */
+@import './animations.css';
+
+/* Global interactive styles */
+:root {
+  --primary-color: #204228;
+  --accent-color: #febe00;
+  --transition-speed: 0.3s;
+}
+
+/* Base interactive classes */
+.interactive-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Interactive images */
+.interactive-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.interactive-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-speed) ease;
+}
+
+.interactive-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Interactive buttons */
+.interactive-button {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-speed) ease;
+  cursor: pointer;
+}
+
+.interactive-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.interactive-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Interactive cards */
+.interactive-card {
+  position: relative;
+  transition: all var(--transition-speed) ease;
+  cursor: pointer;
+}
+
+.interactive-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Floating elements */
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Interactive navigation */
+.nav-item {
+  position: relative;
+  transition: all var(--transition-speed) ease;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: width var(--transition-speed) ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+/* Interactive forms */
+.interactive-input {
+  transition: all var(--transition-speed) ease;
+  border: 2px solid transparent;
+}
+
+.interactive-input:focus {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(254, 190, 0, 0.2);
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--accent-color);
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .interactive-image:hover img {
+    transform: scale(1.02);
+  }
+  
+  .interactive-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* Interactive backgrounds */
+.interactive-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.interactive-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(254, 190, 0, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-speed);
+  pointer-events: none;
+}
+
+.interactive-bg:hover::before {
+  opacity: 1;
+}
+
+/* Interactive typography */
+.interactive-text {
+  transition: all var(--transition-speed) ease;
+}
+
+.interactive-text:hover {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* Interactive icons */
+.interactive-icon {
+  transition: transform var(--transition-speed) ease;
+}
+
+.interactive-icon:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .interactive-image:hover img {
+    transform: scale(1.02);
+  }
+  
+  .interactive-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Print styles */
+@media print {
+  .interactive-button,
+  .interactive-card,
+  .floating {
+    transition: none;
+    transform: none;
+  }
+}
